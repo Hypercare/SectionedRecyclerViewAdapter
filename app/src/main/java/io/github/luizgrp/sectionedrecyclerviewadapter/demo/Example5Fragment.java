@@ -118,14 +118,17 @@ public class Example5Fragment extends Fragment {
             itemHolder.tvItem.setText(name);
             itemHolder.tvSubItem.setText(category);
 
-            itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getContext(), String.format("Clicked on position #%s of Section %s",
-                            sectionedAdapter.getPositionInSection(itemHolder.getAdapterPosition()), title),
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
+            itemHolder.rootView.setOnClickListener(v ->
+                    Toast.makeText(
+                            getContext(),
+                            String.format(
+                                    "Clicked on position #%s of Section %s",
+                                    sectionedAdapter.getPositionInSection(itemHolder.getAdapterPosition()),
+                                    title
+                            ),
+                            Toast.LENGTH_SHORT
+                    ).show()
+            );
         }
 
         @Override
@@ -139,14 +142,16 @@ public class Example5Fragment extends Fragment {
 
             headerHolder.tvTitle.setText(title);
 
-            headerHolder.btnMore.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getContext(), String.format("Clicked on more button from the header of Section %s",
-                            title),
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
+            headerHolder.btnMore.setOnClickListener(v ->
+                    Toast.makeText(
+                            getContext(),
+                            String.format(
+                                    "Clicked on more button from the header of Section %s",
+                                    title
+                            ),
+                            Toast.LENGTH_SHORT
+                    ).show()
+            );
         }
     }
 

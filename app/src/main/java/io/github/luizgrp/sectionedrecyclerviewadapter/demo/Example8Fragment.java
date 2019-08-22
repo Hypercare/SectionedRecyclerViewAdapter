@@ -56,12 +56,7 @@ public class Example8Fragment extends Fragment {
 
         addNewSectionToAdapter();
 
-        view.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addNewSectionToAdapter();
-            }
-        });
+        view.findViewById(R.id.btnAdd).setOnClickListener(view1 -> addNewSectionToAdapter());
 
         return view;
     }
@@ -134,17 +129,14 @@ public class Example8Fragment extends Fragment {
             itemHolder.tvSubItem.setText(category);
             itemHolder.imgItem.setImageResource(name.hashCode() % 2 == 0 ? R.drawable.ic_face_black_48dp : R.drawable.ic_tag_faces_black_48dp);
 
-            itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final int adapterPosition = itemHolder.getAdapterPosition();
-                    if (adapterPosition != RecyclerView.NO_POSITION) {
-                        int positionInSection = sectionedAdapter.getPositionInSection(adapterPosition);
+            itemHolder.rootView.setOnClickListener(v -> {
+                final int adapterPosition = itemHolder.getAdapterPosition();
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    int positionInSection = sectionedAdapter.getPositionInSection(adapterPosition);
 
-                        list.remove(positionInSection);
+                    list.remove(positionInSection);
 
-                        sectionedAdapter.getSectionAdapter(TAG).notifyItemRemoved(positionInSection);
-                    }
+                    sectionedAdapter.getSectionAdapter(TAG).notifyItemRemoved(positionInSection);
                 }
             });
         }
@@ -160,40 +152,31 @@ public class Example8Fragment extends Fragment {
 
             headerHolder.tvTitle.setText(title);
 
-            headerHolder.rootView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View view) {
-                    final int adapterPosition = headerHolder.getAdapterPosition();
-                    if (adapterPosition != RecyclerView.NO_POSITION) {
-                        final int sectionItemsTotal = getSectionItemsTotal();
+            headerHolder.rootView.setOnClickListener(view -> {
+                final int adapterPosition = headerHolder.getAdapterPosition();
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    final int sectionItemsTotal = getSectionItemsTotal();
 
-                        sectionedAdapter.removeSection(TAG);
+                    sectionedAdapter.removeSection(TAG);
 
-                        sectionedAdapter.notifyItemRangeRemoved(adapterPosition, sectionItemsTotal);
-                    }
+                    sectionedAdapter.notifyItemRangeRemoved(adapterPosition, sectionItemsTotal);
                 }
             });
 
-            headerHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final int positionToInsertItemAt = 0;
+            headerHolder.btnAdd.setOnClickListener(v -> {
+                final int positionToInsertItemAt = 0;
 
-                    list.add(positionToInsertItemAt, getRandomName());
+                list.add(positionToInsertItemAt, getRandomName());
 
-                    sectionedAdapter.getSectionAdapter(TAG).notifyItemInserted(positionToInsertItemAt);
-                }
+                sectionedAdapter.getSectionAdapter(TAG).notifyItemInserted(positionToInsertItemAt);
             });
 
-            headerHolder.btnClear.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    final int contentItemsTotal = getContentItemsTotal();
+            headerHolder.btnClear.setOnClickListener(v -> {
+                final int contentItemsTotal = getContentItemsTotal();
 
-                    list.clear();
+                list.clear();
 
-                    sectionedAdapter.getSectionAdapter(TAG).notifyItemRangeRemoved(0, contentItemsTotal);
-                }
+                sectionedAdapter.getSectionAdapter(TAG).notifyItemRangeRemoved(0, contentItemsTotal);
             });
         }
     }
