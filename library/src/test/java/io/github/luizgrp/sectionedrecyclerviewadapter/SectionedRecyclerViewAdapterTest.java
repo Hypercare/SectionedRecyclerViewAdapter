@@ -395,7 +395,7 @@ public class SectionedRecyclerViewAdapterTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void getSectionForPosition_withEmptyAdapter_throwsException() {
         // When
-        sectionAdapter.getSectionForPosition(0);
+        sectionAdapter.getSectionForAdapterPosition(0);
     }
 
     @Test
@@ -407,14 +407,14 @@ public class SectionedRecyclerViewAdapterTest {
         Section sectionStub3 = addStatelessSectionStubToAdapter();
 
         // When
-        Section result = sectionAdapter.getSectionForPosition(0);
-        Section result2 = sectionAdapter.getSectionForPosition(9);
-        Section result3 = sectionAdapter.getSectionForPosition(10);
-        Section result4 = sectionAdapter.getSectionForPosition(11);
-        Section result5 = sectionAdapter.getSectionForPosition(20);
-        Section result6 = sectionAdapter.getSectionForPosition(21);
-        Section result7 = sectionAdapter.getSectionForPosition(22);
-        Section result8 = sectionAdapter.getSectionForPosition(31);
+        Section result = sectionAdapter.getSectionForAdapterPosition(0);
+        Section result2 = sectionAdapter.getSectionForAdapterPosition(9);
+        Section result3 = sectionAdapter.getSectionForAdapterPosition(10);
+        Section result4 = sectionAdapter.getSectionForAdapterPosition(11);
+        Section result5 = sectionAdapter.getSectionForAdapterPosition(20);
+        Section result6 = sectionAdapter.getSectionForAdapterPosition(21);
+        Section result7 = sectionAdapter.getSectionForAdapterPosition(22);
+        Section result8 = sectionAdapter.getSectionForAdapterPosition(31);
 
         // Then
         assertThat(result, is(sectionStub1));

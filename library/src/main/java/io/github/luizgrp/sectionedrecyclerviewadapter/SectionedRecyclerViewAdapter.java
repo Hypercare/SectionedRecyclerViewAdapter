@@ -312,7 +312,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                 if (section.hasHeader()) {
                     if (position == currentPos) {
                         // delegate the binding to the section header
-                        getSectionForPosition(position).onBindHeaderViewHolder(holder);
+                        getSectionForAdapterPosition(position).onBindHeaderViewHolder(holder);
                         return;
                     }
                 }
@@ -320,13 +320,13 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                 if (section.hasFooter()) {
                     if (position == currentPos + sectionTotal - 1) {
                         // delegate the binding to the section header
-                        getSectionForPosition(position).onBindFooterViewHolder(holder);
+                        getSectionForAdapterPosition(position).onBindFooterViewHolder(holder);
                         return;
                     }
                 }
 
                 // delegate the binding to the section content
-                getSectionForPosition(position).onBindContentViewHolder(holder, getPositionInSection(position));
+                getSectionForAdapterPosition(position).onBindContentViewHolder(holder, getPositionInSection(position));
                 return;
             }
 
@@ -458,7 +458,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param position position in the adapter
      * @return Section object for that position
      */
-    public Section getSectionForPosition(final int position) {
+    public Section getSectionForAdapterPosition(final int position) {
 
         int currentPos = 0;
 
