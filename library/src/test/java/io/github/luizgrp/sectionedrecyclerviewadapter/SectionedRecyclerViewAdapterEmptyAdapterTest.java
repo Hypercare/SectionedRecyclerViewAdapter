@@ -135,7 +135,7 @@ public class SectionedRecyclerViewAdapterEmptyAdapterTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void givenEmptyAdapter_whenGetSectionForPosition_thenThrowsException() {
         // When
-        sectionedRecyclerViewAdapter.getSectionForPosition(0);
+        sectionedRecyclerViewAdapter.getSectionForAdapterPosition(0);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)

@@ -226,8 +226,8 @@ public class SectionedRecyclerViewAdapterScenario1Test {
         final Section section = sectionedRecyclerViewAdapter.getSections().getValue(0);
 
         // When
-        Section sectionForFirstItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForPosition(0);
-        Section sectionForLastItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForPosition(11);
+        Section sectionForFirstItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForAdapterPosition(0);
+        Section sectionForLastItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForAdapterPosition(11);
 
         // Then
         assertThat(sectionForFirstItemPositionInAdapter, is(section));
@@ -237,8 +237,8 @@ public class SectionedRecyclerViewAdapterScenario1Test {
     @Test
     public void givenSection_whenGetSectionForPosition_thenReturnsCorrectSection() {
         // When
-        Section sectionForFirstItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForPosition(12);
-        Section sectionForLastItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForPosition(23);
+        Section sectionForFirstItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForAdapterPosition(12);
+        Section sectionForLastItemPositionInAdapter = sectionedRecyclerViewAdapter.getSectionForAdapterPosition(23);
 
         // Then
         assertThat(sectionForFirstItemPositionInAdapter, is(scenario.getSection()));

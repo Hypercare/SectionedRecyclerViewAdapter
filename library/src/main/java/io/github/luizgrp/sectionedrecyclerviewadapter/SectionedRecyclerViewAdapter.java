@@ -336,9 +336,9 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                     if (position == currentPos) {
                         // delegate the binding to the section header
                         if (payloads == null) {
-                            getSectionForPosition(position).onBindHeaderViewHolder(holder);
+                            getSectionForAdapterPosition(position).onBindHeaderViewHolder(holder);
                         } else {
-                            getSectionForPosition(position).onBindHeaderViewHolder(holder, payloads);
+                            getSectionForAdapterPosition(position).onBindHeaderViewHolder(holder, payloads);
                         }
                         return;
                     }
@@ -348,16 +348,16 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                     if (position == currentPos + sectionTotal - 1) {
                         // delegate the binding to the section header
                         if (payloads == null) {
-                            getSectionForPosition(position).onBindFooterViewHolder(holder);
+                            getSectionForAdapterPosition(position).onBindFooterViewHolder(holder);
                         } else {
-                            getSectionForPosition(position).onBindFooterViewHolder(holder, payloads);
+                            getSectionForAdapterPosition(position).onBindFooterViewHolder(holder, payloads);
                         }
                         return;
                     }
                 }
 
                 // delegate the binding to the section content
-                onBindContentViewHolder(getSectionForPosition(position), holder, position, payloads);
+                onBindContentViewHolder(getSectionForAdapterPosition(position), holder, position, payloads);
                 return;
             }
 
@@ -527,7 +527,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
      * @param position position in the adapter
      * @return Section object for that position
      */
-    public Section getSectionForPosition(final int position) {
+    public Section getSectionForAdapterPosition(final int position) {
 
         int currentPos = 0;
 
